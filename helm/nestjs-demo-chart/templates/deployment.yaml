@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+    env: {{ .Values.env }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+        env: {{ .Values.env }}
+    spec:
+      containers:
+        - name: nestjs-demo
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 3000
+          env:
+            - name: APP_ENV
+              value: "{{ .Values.env }}"
+            - name: PORT
+              value: "3000"
+          resources:
+            requests:
+              cpu: {{ .Values.resources.requestCpu }}
+              memory: {{ .Values.resources.requestMemory }}
+            limits:
+              cpu: {{ .Values.resources.limitCpu }}
+              memory: {{ .Values.resources.limitMemory }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.probe.path }}
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.probe.path }}
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 15

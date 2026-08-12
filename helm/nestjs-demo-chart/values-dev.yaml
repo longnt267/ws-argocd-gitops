@@ -1,0 +1,16 @@
+# values-dev.yaml - chỉ khai báo những gì KHÁC so với values.yaml mặc định
+
+env: dev
+replicaCount: 1
+
+image:
+  tag: dev
+
+service:
+  port: 4000
+
+resources:
+  requestCpu: 50m
+  requestMemory: 64Mi
+  limitCpu: 200m
+  limitMemory: 256Mi

@@ -1,0 +1,13 @@
+# values.yaml - giá trị mặc định, dùng chung cho mọi môi trường
+# Các giá trị khác nhau giữa dev/stage nằm ở values-dev.yaml / values-stage.yaml
+
+image:
+  repository: ghcr.io/longnt267/nestjs-demo # CI (repo app) tự ghi đè giá trị này mỗi lần deploy
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  targetPort: 3000
+
+probe:
+  path: /health

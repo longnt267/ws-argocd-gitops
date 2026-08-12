@@ -1,0 +1,16 @@
+# values-stage.yaml - chỉ khai báo những gì KHÁC so với values.yaml mặc định
+
+env: staging
+replicaCount: 2
+
+image:
+  tag: stage
+
+service:
+  port: 4001
+
+resources:
+  requestCpu: 100m
+  requestMemory: 128Mi
+  limitCpu: 500m
+  limitMemory: 512Mi
