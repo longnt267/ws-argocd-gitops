@@ -4,7 +4,7 @@ env: dev
 replicaCount: 1
 
 image:
-  tag: dev-71f0314
+  tag: dev-95c1bce
 
 service:
   port: 4000
