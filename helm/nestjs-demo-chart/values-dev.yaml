@@ -1,7 +1,7 @@
 # values-dev.yaml - chỉ khai báo những gì KHÁC so với values.yaml mặc định
 
 env: dev
-replicaCount: 1
+replicaCount: 4
 
 image:
   tag: dev-95c1bce
