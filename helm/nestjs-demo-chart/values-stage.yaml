@@ -8,6 +8,7 @@ image:
 
 service:
   port: 4001
+  nodePort: 31161
 
 resources:
   requestCpu: 100m
